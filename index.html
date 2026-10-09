@@ -1058,7 +1058,7 @@ function Calendar(root, cfg) {
       return p && String(p.text || "").trim();
     }));
     if (!list.length) {
-      wrap.appendChild(el("p", "pt-empty", "프롬프트를 넣어 주세요\ndata.js ⑧ oc → 캐릭터 prompts"));
+      wrap.appendChild(el("p", "pt-empty", "준비 중이에요"));
       return wrap;
     }
     list.forEach((function(p, i) {
@@ -2714,7 +2714,7 @@ function Calendar(root, cfg) {
         old.parentNode.replaceChild(s, old);
       }));
     } else {
-      box.appendChild(el("p", "gs-empty", "data.js ⑪ guest → widget 에 방명록 주소나 코드를 넣어 주세요."));
+      box.appendChild(el("p", "gs-empty", "준비 중이에요"));
     }
     panel.appendChild(box);
   }
@@ -2737,7 +2737,7 @@ function Calendar(root, cfg) {
     panel.appendChild(more);
     if (!ready) {
       form.classList.add("is-off");
-      listBox.appendChild(el("p", "gs-empty", "아직 방명록이 연결되지 않았어요.\ndata.js ⑪ guest → google 의 설정 방법을 따라 구글 폼과 시트를 연결해 주세요."));
+      listBox.appendChild(el("p", "gs-empty", "준비 중이에요"));
     }
     var entries = [], shown = 0, PER = GG.perPage || 10;
     function card(e, isNew) {
@@ -3060,7 +3060,7 @@ function Calendar(root, cfg) {
         row.appendChild(el("dd", "", g.desc || ""));
         list.appendChild(row);
       }));
-      if (!shown.length) list.appendChild(el("p", "pt-empty", items.length ? "찾는 용어가 없어요" : "용어를 넣어 주세요\ndata.js ⑫ world → glossary"));
+      if (!shown.length) list.appendChild(el("p", "pt-empty", items.length ? "찾는 용어가 없어요" : "준비 중이에요"));
     }
     draw();
     body.appendChild(wrap);
@@ -3440,8 +3440,8 @@ function Calendar(root, cfg) {
     fill(elVol);
     if (!list.length) {
       root.classList.add("is-empty");
-      elTitle.textContent = "음원 파일을 넣어 주세요";
-      elArtist.textContent = "data.js ⑦ music";
+      elTitle.textContent = "No music";
+      elArtist.textContent = "";
       root.querySelectorAll(".mp-ctrl button, .mp-seek").forEach((function(b) {
         b.disabled = true;
       }));
