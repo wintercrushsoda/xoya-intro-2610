@@ -2640,6 +2640,15 @@ function Calendar(root, cfg) {
   $("owNav").parentNode.appendChild(num);
   num.appendChild(el("span", "ow-bignum-of", "/ " + pad2(tabs.length)));
   if (tabs.length) showTab(0);
+  var ownerPage = PAGES.owner;
+  PAGES.owner = function(sub) {
+    ownerPage();
+    var want = String(sub || "").toLowerCase();
+    if (!want) return;
+    tabs.forEach((function(t, i) {
+      if (String(t.name || "").toLowerCase() === want) showTab(i);
+    }));
+  };
 })()</script>
 
   
