@@ -208,6 +208,33 @@
       </section>
 
       
+      <section class="page" data-page="prompt" hidden>
+              <section class="ow">
+
+                
+                <aside class="ow-left">
+                  <a class="oc-home" href="#">
+                    <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>HOME
+                  </a>
+                  <h1 class="oc-title" id="pmTitle"></h1>
+                  <p class="oc-sub" id="pmSub"></p>
+
+                  <div class="ow-card gs-card">
+                    <p class="gs-intro" id="pmIntro"></p>
+                    <div class="gs-links" id="pmGroups"></div>
+                  </div>
+                </aside>
+
+                
+                <div class="ow-right">
+                  <div class="ow-panel gs-panel" id="pmPanel"></div>
+                </div>
+
+              </section>
+    
+      </section>
+
+      
       <section class="page" data-page="world" hidden>
               <section class="wd" id="wdList">
                 
@@ -2903,6 +2930,131 @@ function Calendar(root, cfg) {
       }));
     }));
   }
+})()</script>
+
+  
+  <script>(function() {
+  var D = window.SITE || {};
+  var PM = D.prompt || {};
+  function $(id) {
+    return document.getElementById(id);
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  var COPY_ICON = '<svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
+  var DONE_ICON = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  function splitTags(text) {
+    var out = [], cur = "", depth = 0;
+    String(text).split("").forEach((function(ch) {
+      if (ch === "(" || ch === "[" || ch === "{") depth++;
+      if (ch === ")" || ch === "]" || ch === "}") depth = Math.max(0, depth - 1);
+      if ((ch === "," || ch === "\n") && depth === 0) {
+        if (cur.trim()) out.push(cur.trim());
+        cur = "";
+      } else cur += ch;
+    }));
+    if (cur.trim()) out.push(cur.trim());
+    return out;
+  }
+  function copyBtn(text, label, cls) {
+    var b = el("button", "pt-copy" + (cls ? " " + cls : ""));
+    b.type = "button";
+    var ic = el("i");
+    ic.innerHTML = COPY_ICON;
+    b.appendChild(ic);
+    var tx = el("span", "", "복사");
+    b.appendChild(tx);
+    b.onclick = function() {
+      COPY(text, (function(ok) {
+        TOAST(ok ? label + " 프롬프트를 복사했어요" : "복사에 실패했어요");
+        if (!ok) return;
+        b.classList.add("is-done");
+        ic.innerHTML = DONE_ICON;
+        tx.textContent = "복사됨";
+        setTimeout((function() {
+          b.classList.remove("is-done");
+          ic.innerHTML = COPY_ICON;
+          tx.textContent = "복사";
+        }), 1600);
+      }));
+    };
+    return b;
+  }
+  function buildList(prompts) {
+    var wrap = el("div", "pt");
+    var list = (prompts || []).filter((function(p) {
+      return p && String(p.text || "").trim();
+    }));
+    if (!list.length) {
+      wrap.appendChild(el("p", "pt-empty", "준비 중이에요"));
+      return wrap;
+    }
+    list.forEach((function(p, i) {
+      var text = String(p.text).trim();
+      var tags = splitTags(text);
+      var item = el("section", "pt-item");
+      item.style.animationDelay = i * .06 + "s";
+      var h = el("div", "pt-head");
+      h.appendChild(el("span", "pt-num", (i < 9 ? "0" : "") + (i + 1)));
+      h.appendChild(el("h3", "pt-title", p.label || "프롬프트"));
+      h.appendChild(el("span", "pt-count", tags.length + " TAGS"));
+      h.appendChild(copyBtn(text, p.label || "", ""));
+      item.appendChild(h);
+      var box = el("div", "pt-tags");
+      tags.forEach((function(t) {
+        box.appendChild(el("span", "pt-tag", t));
+      }));
+      item.appendChild(box);
+      if (p.note) item.appendChild(el("p", "pt-note", p.note));
+      wrap.appendChild(item);
+    }));
+    return wrap;
+  }
+  THEME.apply(document.querySelector('.page[data-page="prompt"]'), THEME.base("prompt"));
+  $("pmTitle").textContent = PM.title || "Prompt";
+  $("pmSub").textContent = PM.subtitle || "";
+  $("pmIntro").textContent = PM.intro || "";
+  var groups = (PM.groups || []).filter((function(g) {
+    return g && g.name;
+  }));
+  var nav = $("pmGroups"), panel = $("pmPanel"), cur = -1;
+  groups.forEach((function(g, i) {
+    var a = el("a", "gs-link pm-group");
+    a.href = "#prompt/" + (i + 1);
+    a.style.animationDelay = .4 + i * .06 + "s";
+    var tx = el("span", "gs-link-text");
+    tx.appendChild(el("strong", "", g.name));
+    if (g.desc) tx.appendChild(el("span", "", g.desc));
+    a.appendChild(tx);
+    var ar = el("i");
+    ar.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
+    a.appendChild(ar);
+    nav.appendChild(a);
+  }));
+  nav.hidden = groups.length < 2;
+  function show(i) {
+    if (i === cur) return;
+    cur = i;
+    for (var k = 0; k < nav.children.length; k++) nav.children[k].classList.toggle("is-active", k === i);
+    panel.innerHTML = "";
+    var g = groups[i];
+    if (!g) {
+      panel.appendChild(el("p", "pr-detail-title", PM.title || "Prompt"));
+      panel.appendChild(el("p", "pt-empty", "준비 중이에요"));
+      return;
+    }
+    panel.appendChild(el("p", "pr-detail-title", g.name));
+    panel.appendChild(buildList(g.prompts));
+  }
+  PAGES.prompt = function(sub) {
+    document.title = (PM.title || "Prompt") + " | " + (D.title || "");
+    var n = parseInt(sub, 10);
+    show(n >= 1 && n <= groups.length ? n - 1 : cur < 0 ? 0 : cur);
+  };
 })()</script>
 
   

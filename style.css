@@ -8813,4 +8813,15 @@ html.is-mobile .fm-text strong {
 }
 html.is-mobile .fm-text span {
   font-size: 11.5px
+}.pm-group.is-active {
+  border-color: var(--c-accent)
+}
+.pm-group.is-active i {
+  background: var(--c-accent);
+  color: var(--c-on-accent)
+}
+html.is-mobile .ow-card.gs-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch
 }

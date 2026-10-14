@@ -76,6 +76,18 @@ window.SITE = {
         "card": "",
         "background": ""
       },
+      "prompt": {
+        "point": "",
+        "title": "",
+        "text": "",
+        "sub": "",
+        "line": "",
+        "soft": "",
+        "accent": "",
+        "accentText": "",
+        "card": "",
+        "background": ""
+      },
       "guest": {
         "point": "",
         "title": "",
@@ -129,6 +141,11 @@ window.SITE = {
     {
       "name": "Owner",
       "link": "#owner",
+      "hidden": false
+    },
+    {
+      "name": "Prompt",
+      "link": "#prompt",
       "hidden": false
     },
     {
@@ -1123,6 +1140,40 @@ window.SITE = {
         "name": "메일함",
         "desc": "편지 보내기",
         "url": ""
+      }
+    ]
+  },
+  "prompt": {
+    "title": "Prompt",
+    "subtitle": "Prompt Archive",
+    "intro": "자주 쓰는 프롬프트 모음이에요.\n복사 버튼으로 바로 가져가세요!",
+    "groups": [
+      {
+        "name": "기본",
+        "desc": "퀄리티 · 네거티브",
+        "prompts": [
+          {
+            "label": "퀄리티",
+            "text": "masterpiece, best quality, (퀄리티 프롬프트를 여기에)",
+            "note": ""
+          },
+          {
+            "label": "네거티브",
+            "text": "lowres, bad anatomy, (네거티브 프롬프트를 여기에)",
+            "note": ""
+          }
+        ]
+      },
+      {
+        "name": "그림체",
+        "desc": "작가 · 화풍 태그",
+        "prompts": [
+          {
+            "label": "그림체",
+            "text": "(그림체 프롬프트를 여기에)",
+            "note": ""
+          }
+        ]
       }
     ]
   },
