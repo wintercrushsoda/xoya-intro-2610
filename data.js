@@ -76,6 +76,18 @@ window.SITE = {
         "card": "",
         "background": ""
       },
+      "prompt": {
+        "point": "",
+        "title": "",
+        "text": "",
+        "sub": "",
+        "line": "",
+        "soft": "",
+        "accent": "",
+        "accentText": "",
+        "card": "",
+        "background": ""
+      },
       "guest": {
         "point": "",
         "title": "",
@@ -129,6 +141,11 @@ window.SITE = {
     {
       "name": "Owner",
       "link": "#owner",
+      "hidden": false
+    },
+    {
+      "name": "Prompt",
+      "link": "#prompt",
       "hidden": false
     },
     {
@@ -1123,6 +1140,166 @@ window.SITE = {
         "name": "메일함",
         "desc": "편지 보내기",
         "url": ""
+      }
+    ]
+  },
+  "prompt": {
+    "title": "Prompt",
+    "subtitle": "NovelAI Prompts",
+    "intro": "NovelAI 기준 캐릭터 프롬프트예요.\n베이스 → 캐릭터1 → 캐릭터2 칸 순서로 복사해 쓰세요!",
+    "list": [
+      {
+        "name": "공통",
+        "desc": "퀄리티 · 네거티브",
+        "base": [
+          {
+            "label": "퀄리티",
+            "text": "masterpiece, best quality, (퀄리티 프롬프트를 여기에)"
+          },
+          {
+            "label": "네거티브",
+            "text": "lowres, bad anatomy, (네거티브 프롬프트를 여기에)"
+          }
+        ]
+      },
+      {
+        "name": "#탱귤",
+        "desc": "Santa × Cider",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Santa",
+            "image": "img/pair-list-1-portraits-1.png",
+            "look": "(Santa 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Santa 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char1"
+          }
+        ]
+      },
+      {
+        "name": "#724",
+        "desc": "Seven × e(X)",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Seven",
+            "image": "",
+            "look": "(Seven 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Seven 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char2"
+          }
+        ]
+      },
+      {
+        "name": "#서서",
+        "desc": "서해영 × 서하리",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "서해영",
+            "image": "img/pair-list-3-portraits-1.png",
+            "look": "(서해영 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(서해영 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char4"
+          }
+        ]
+      },
+      {
+        "name": "#후냐",
+        "desc": "Mustang × Agape",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Mustang",
+            "image": "",
+            "look": "(Mustang 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Mustang 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char5"
+          }
+        ]
+      },
+      {
+        "name": "#더블",
+        "desc": "Blue × Dusty",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Blue",
+            "image": "",
+            "look": "(Blue 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Blue 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char3"
+          }
+        ]
+      },
+      {
+        "name": "퀘이사",
+        "desc": "SOLO",
+        "chars": [
+          {
+            "oc": "char6"
+          }
+        ]
       }
     ]
   },

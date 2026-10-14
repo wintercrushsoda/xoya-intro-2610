@@ -208,6 +208,35 @@
       </section>
 
       
+      <section class="page" data-page="prompt" hidden>
+              <section class="ow">
+
+                
+                <aside class="ow-left">
+                  <a class="oc-home" href="#">
+                    <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>HOME
+                  </a>
+                  <h1 class="oc-title" id="pmTitle"></h1>
+                  <p class="oc-sub" id="pmSub"></p>
+
+                  <div class="ow-card gs-card">
+                    <p class="gs-intro" id="pmIntro"></p>
+                    <div class="gs-links" id="pmGroups"></div>
+                  </div>
+                </aside>
+
+                
+                <div class="ow-right">
+                  <div class="ow-panel pm-panel" id="pmPanel">
+                    <div class="pr-body" id="pmBody"></div>
+                  </div>
+                </div>
+
+              </section>
+    
+      </section>
+
+      
       <section class="page" data-page="world" hidden>
               <section class="wd" id="wdList">
                 
@@ -2903,6 +2932,233 @@ function Calendar(root, cfg) {
       }));
     }));
   }
+})()</script>
+
+  
+  <script>(function() {
+  var D = window.SITE || {};
+  var PM = D.prompt || {};
+  var OCS = (D.oc || {}).list || [];
+  function $(id) {
+    return document.getElementById(id);
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function clean(t) {
+    return String(t || "").trim().replace(/[,\s]+$/, "");
+  }
+  function findOc(id) {
+    for (var i = 0; i < OCS.length; i++) if ((OCS[i].id || "oc" + i) === id) return OCS[i];
+    return null;
+  }
+  function charOf(c) {
+    if (!c) return null;
+    var oc = c.oc ? findOc(c.oc) : null;
+    var src = oc ? oc.prompt || {} : c;
+    var look = src.look || "", outfits = (src.outfits || []).slice();
+    if (oc && !oc.prompt) (oc.prompts || []).forEach((function(p, i) {
+      if (!p || !String(p.text || "").trim()) return;
+      if (!look && (/외형/.test(p.label || "") || i === 0)) look = p.text; else outfits.push({
+        name: p.label || "의상",
+        text: p.text
+      });
+    }));
+    return {
+      name: c.name || (oc ? oc.name : "") || "",
+      image: c.image || (oc ? oc.thumb || ((oc.standing || [])[0] || {}).image : "") || "",
+      look: look,
+      outfits: outfits.filter((function(o) {
+        return o && String(o.text || "").trim();
+      }))
+    };
+  }
+  function copyChip(label, text, toast, cls) {
+    var b = el("button", "ow-men-chip pm-chip" + (cls ? " " + cls : ""));
+    b.type = "button";
+    var t = el("b", "", label);
+    b.appendChild(t);
+    if (!clean(text)) {
+      b.disabled = true;
+      return b;
+    }
+    b.onclick = function() {
+      COPY(clean(text), (function(ok) {
+        TOAST(ok ? toast + " 복사했어요" : "복사에 실패했어요");
+        if (!ok) return;
+        b.classList.add("is-done");
+        t.textContent = "복사됨";
+        clearTimeout(b._t);
+        b._t = setTimeout((function() {
+          b.classList.remove("is-done");
+          t.textContent = label;
+        }), 1600);
+      }));
+    };
+    return b;
+  }
+  function row(head, kids, main) {
+    var r = el("div", "ow-men-row" + (main ? " is-main" : ""));
+    r.appendChild(el("span", "ow-men-head", head));
+    var l = el("div", "ow-men-list");
+    kids.forEach((function(k) {
+      l.appendChild(k);
+    }));
+    r.appendChild(l);
+    return r;
+  }
+  function secHead(n, title, en) {
+    var h = el("div", "ow-sec-head");
+    h.appendChild(el("span", "ow-sec-num", (n < 10 ? "0" : "") + n));
+    h.appendChild(el("h3", "ow-sec-title", title || ""));
+    h.appendChild(el("span", "ow-sec-line"));
+    if (en) h.appendChild(el("span", "ow-sec-en", en));
+    return h;
+  }
+  function avatar(c, cls) {
+    var a = el("span", cls);
+    if (c && c.image) {
+      var im = el("img");
+      im.src = c.image;
+      im.alt = c.name;
+      a.appendChild(im);
+    } else a.textContent = ((c && c.name) || "?").charAt(0);
+    return a;
+  }
+  THEME.apply(document.querySelector('.page[data-page="prompt"]'), THEME.base("prompt"));
+  $("pmTitle").textContent = PM.title || "Prompt";
+  $("pmSub").textContent = PM.subtitle || "";
+  $("pmIntro").textContent = PM.intro || "";
+  var list = (PM.list || []).filter((function(e) {
+    return e && e.name;
+  })).map((function(e) {
+    return {
+      name: e.name,
+      desc: e.desc || "",
+      base: (e.base || []).filter((function(b) {
+        return b && b.label;
+      })),
+      chars: (e.chars || []).map(charOf).filter(Boolean)
+    };
+  }));
+  var nav = $("pmGroups"), body = $("pmBody"), cur = -1;
+  list.forEach((function(e, i) {
+    var a = el("a", "gs-link pm-item");
+    a.href = "#prompt/" + (i + 1);
+    a.style.animationDelay = .4 + i * .06 + "s";
+    var av = el("span", "pm-av" + (e.chars.length > 1 ? " is-pair" : ""));
+    if (e.chars.length) e.chars.slice(0, 2).forEach((function(c) {
+      av.appendChild(avatar(c, "pm-face"));
+    })); else av.appendChild(el("span", "pm-face is-base", "B"));
+    a.appendChild(av);
+    var tx = el("span", "gs-link-text");
+    tx.appendChild(el("strong", "", e.name));
+    if (e.desc) tx.appendChild(el("span", "", e.desc));
+    a.appendChild(tx);
+    nav.appendChild(a);
+  }));
+  nav.hidden = !list.length;
+  function show(i) {
+    if (i === cur) return;
+    cur = i;
+    for (var k = 0; k < nav.children.length; k++) nav.children[k].classList.toggle("is-active", k === i);
+    body.innerHTML = "";
+    $("pmPanel").scrollTop = 0;
+    var e = list[i];
+    if (!e) {
+      body.appendChild(el("p", "pr-detail-title", PM.title || "Prompt"));
+      body.appendChild(el("p", "pt-empty", "준비 중이에요"));
+      return;
+    }
+    body.appendChild(el("p", "pr-detail-title", e.name));
+    var shots = e.chars.filter((function(c) {
+      return c.image;
+    }));
+    if (shots.length) {
+      var fw = el("div", "pm-faces is-" + shots.length);
+      shots.forEach((function(c) {
+        var f = el("figure", "pm-shot");
+        var im = el("img");
+        im.src = c.image;
+        im.alt = c.name;
+        f.appendChild(im);
+        f.appendChild(el("figcaption", "", c.name));
+        fw.appendChild(f);
+      }));
+      body.appendChild(fw);
+    }
+    var n = 0;
+    if (e.base.length) {
+      var bs = el("section", "pf-sec ow-sec");
+      bs.appendChild(secHead(++n, e.chars.length ? "베이스" : "공통", "BASE"));
+      var bw = el("div", "ow-men");
+      bw.appendChild(row("BASE", e.base.map((function(b) {
+        return copyChip(b.label, b.text, b.label);
+      }))));
+      bs.appendChild(bw);
+      body.appendChild(bs);
+    }
+    e.chars.forEach((function(c, ci) {
+      var s = el("section", "pf-sec ow-sec");
+      s.appendChild(secHead(++n, c.name, e.chars.length > 1 ? "CHARACTER " + (ci + 1) : "CHARACTER"));
+      var w = el("div", "ow-men");
+      var sel = 0, allBtn;
+      function allText() {
+        var o = c.outfits[sel];
+        return [ clean(c.look), o ? clean(o.text) : "" ].filter(Boolean).join(", ");
+      }
+      w.appendChild(row("LOOK", [ copyChip("외형", c.look, c.name + " 외형") ]));
+      if (c.outfits.length) {
+        var chips = c.outfits.map((function(o, oi) {
+          var b = copyChip(o.name || "의상", o.text, c.name + " " + (o.name || "의상"), oi === 0 ? "is-sel" : "");
+          b.addEventListener("click", (function() {
+            sel = oi;
+            chips.forEach((function(x, xi) {
+              x.classList.toggle("is-sel", xi === oi);
+            }));
+            allBtn.querySelector("b").textContent = allLabel();
+          }));
+          return b;
+        }));
+        w.appendChild(row("OUTFIT", chips));
+      }
+      function allLabel() {
+        var o = c.outfits[sel];
+        return o ? "외형 + " + (o.name || "의상") : "외형";
+      }
+      allBtn = el("button", "ow-men-chip pm-chip");
+      allBtn.type = "button";
+      allBtn.appendChild(el("b", "", allLabel()));
+      allBtn.onclick = function() {
+        var t = allText();
+        if (!t) return;
+        COPY(t, (function(ok) {
+          TOAST(ok ? c.name + " 전체 프롬프트를 복사했어요" : "복사에 실패했어요");
+          if (!ok) return;
+          var lb = allBtn.querySelector("b");
+          allBtn.classList.add("is-done");
+          lb.textContent = "복사됨";
+          clearTimeout(allBtn._t);
+          allBtn._t = setTimeout((function() {
+            allBtn.classList.remove("is-done");
+            lb.textContent = allLabel();
+          }), 1600);
+        }));
+      };
+      allBtn.disabled = !allText();
+      w.appendChild(row("ALL", [ allBtn ], true));
+      s.appendChild(w);
+      body.appendChild(s);
+    }));
+  }
+  PAGES.prompt = function(sub) {
+    document.title = (PM.title || "Prompt") + " | " + (D.title || "");
+    var n = parseInt(sub, 10);
+    show(n >= 1 && n <= list.length ? n - 1 : cur < 0 ? 0 : cur);
+  };
 })()</script>
 
   
