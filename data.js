@@ -1145,33 +1145,159 @@ window.SITE = {
   },
   "prompt": {
     "title": "Prompt",
-    "subtitle": "Prompt Archive",
-    "intro": "자주 쓰는 프롬프트 모음이에요.\n복사 버튼으로 바로 가져가세요!",
-    "groups": [
+    "subtitle": "NovelAI Prompts",
+    "intro": "NovelAI 기준 캐릭터 프롬프트예요.\n베이스 → 캐릭터1 → 캐릭터2 칸 순서로 복사해 쓰세요!",
+    "list": [
       {
-        "name": "기본",
+        "name": "공통",
         "desc": "퀄리티 · 네거티브",
-        "prompts": [
+        "base": [
           {
             "label": "퀄리티",
-            "text": "masterpiece, best quality, (퀄리티 프롬프트를 여기에)",
-            "note": ""
+            "text": "masterpiece, best quality, (퀄리티 프롬프트를 여기에)"
           },
           {
             "label": "네거티브",
-            "text": "lowres, bad anatomy, (네거티브 프롬프트를 여기에)",
-            "note": ""
+            "text": "lowres, bad anatomy, (네거티브 프롬프트를 여기에)"
           }
         ]
       },
       {
-        "name": "그림체",
-        "desc": "작가 · 화풍 태그",
-        "prompts": [
+        "name": "#탱귤",
+        "desc": "Santa × Cider",
+        "base": [
           {
-            "label": "그림체",
-            "text": "(그림체 프롬프트를 여기에)",
-            "note": ""
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Santa",
+            "image": "img/pair-list-1-portraits-1.png",
+            "look": "(Santa 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Santa 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char1"
+          }
+        ]
+      },
+      {
+        "name": "#724",
+        "desc": "Seven × e(X)",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Seven",
+            "image": "",
+            "look": "(Seven 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Seven 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char2"
+          }
+        ]
+      },
+      {
+        "name": "#서서",
+        "desc": "서해영 × 서하리",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "서해영",
+            "image": "img/pair-list-3-portraits-1.png",
+            "look": "(서해영 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(서해영 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char4"
+          }
+        ]
+      },
+      {
+        "name": "#후냐",
+        "desc": "Mustang × Agape",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Mustang",
+            "image": "",
+            "look": "(Mustang 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Mustang 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char5"
+          }
+        ]
+      },
+      {
+        "name": "#더블",
+        "desc": "Blue × Dusty",
+        "base": [
+          {
+            "label": "구도",
+            "text": "2people, couple, (구도 프롬프트를 여기에)"
+          }
+        ],
+        "chars": [
+          {
+            "name": "Blue",
+            "image": "",
+            "look": "(Blue 외형 프롬프트를 여기에)",
+            "outfits": [
+              {
+                "name": "기본",
+                "text": "(Blue 의상 프롬프트를 여기에)"
+              }
+            ]
+          },
+          {
+            "oc": "char3"
+          }
+        ]
+      },
+      {
+        "name": "퀘이사",
+        "desc": "SOLO",
+        "chars": [
+          {
+            "oc": "char6"
           }
         ]
       }

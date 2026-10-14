@@ -8813,11 +8813,88 @@ html.is-mobile .fm-text strong {
 }
 html.is-mobile .fm-text span {
   font-size: 11.5px
-}.pm-group.is-active {
+}.pm-item {
+  padding: 12px 16px 12px 12px
+}
+.pm-item.is-active {
   border-color: var(--c-accent)
 }
-.pm-group.is-active i {
-  background: var(--c-accent);
+.pm-av {
+  flex: none;
+  display: flex
+}
+.pm-face {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--c-soft);
+  box-shadow: 0 0 0 2px var(--c-card);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-sub)
+}
+.pm-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%
+}
+.pm-av.is-pair .pm-face + .pm-face {
+  margin-left: -12px
+}
+.pm-faces {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+  max-width: 420px;
+  margin: 4px 0 30px
+}
+.pm-faces.is-1 {
+  grid-template-columns: minmax(0,1fr);
+  max-width: 203px
+}
+.pm-shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+.pm-shot img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: 50% 10%;
+  border-radius: 22px;
+  background: var(--c-soft);
+  display: block
+}
+.pm-shot figcaption {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-sub)
+}
+.pm-chip {
+  font: inherit;
+  cursor: pointer;
+  padding: 0 16px
+}
+.pm-chip:disabled {
+  opacity: .4;
+  cursor: default;
+  transform: none
+}
+.pm-chip.is-sel {
+  border-color: var(--c-text)
+}
+.pm-chip.is-done,
+.ow-men-row.is-main .pm-chip.is-done {
+  background: var(--c-text);
+  border-color: var(--c-text)
+}
+.pm-chip.is-done b {
   color: var(--c-on-accent)
 }
 html.is-mobile .ow-card.gs-card {
