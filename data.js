@@ -213,16 +213,7 @@ window.SITE = {
             "tag": "No.01 · AU",
             "subtitle": "AU 한 줄 소개가 들어갑니다",
             "desc": "AU 설명이 들어갑니다.",
-            "prompts": [
-              {
-                "label": "외형",
-                "text": "1girl, long black hair, red eyes, (외형 프롬프트를 여기에)"
-              },
-              {
-                "label": "AU 의상",
-                "text": "school uniform, ribbon, (AU 의상 프롬프트를 여기에)"
-              }
-            ],
+            "prompts": [],
             "badge": {
               "image": "",
               "title": "AU 진영",
@@ -335,12 +326,12 @@ window.SITE = {
         "prompts": [
           {
             "label": "외형",
-            "text": "1girl, long black hair, red eyes, (외형 프롬프트를 여기에)",
+            "text": "girl, dark orange hair, blunt bangs, short hair, two medium buns on top, shoulder length hair, wavy hair, yellow eyes, brave expression, smile, 0.5::smile::, 0.7::tareme::, 0.2::medium breasts::, wavy hair,",
             "note": ""
           },
           {
             "label": "의상",
-            "text": "white shirt, black coat, (의상 프롬프트를 여기에)",
+            "text": "white military uniform, (military jacket), (epaulettes), (gold buttons), (belt), (white uniform skirt)",
             "note": ""
           }
         ],
@@ -452,7 +443,18 @@ window.SITE = {
           }
         ],
         "stats": [],
-        "prompts": [],
+        "prompts": [
+          {
+            "label": "외형",
+            "text": "Girl, solo, 1.4::aged up::, Dark green hair, olive eyes, sharp eyes, 0.3::half-close eyes::, 0.3::soft smoky eyes::, turime, sharp eyes, long hair, wavy hair, 2::center part bangs::, gentle smile, smug, Large breast, pale skin, 1.2:: face focus, 0.6::messy bangs::, draped on shoulders",
+            "note": ""
+          },
+          {
+            "label": "의상",
+            "text": "luxurious silk robe dress, deep burgundy satin, wrapped dress, loose belt, v-neck, long sleeves, front split, lace-trimmed lingerie underneath, oversized vintage leather jacket",
+            "note": ""
+          }
+        ],
         "faction": "진영 A",
         "badge": {
           "image": "",
@@ -490,7 +492,18 @@ window.SITE = {
         "color": "",
         "standing": [],
         "stats": [],
-        "prompts": [],
+        "prompts": [
+          {
+            "label": "외형",
+            "text": "girl, aged up, (white blonde hair:1.3), (brown roots:1.2), long hair, side part, hair over one shoulder, single sidelock, hair behind ear, parted bangs, messy bangs, (forehead:0.6), black eyes, 0.2::half-closed eyes::, languid, bored, black small butterfly tattoo on side neck",
+            "note": ""
+          },
+          {
+            "label": "의상",
+            "text": "white military uniform, white military uniform rolled-up pants, loose-fitting clothes, disheveled, sneakers",
+            "note": ""
+          }
+        ],
         "faction": "",
         "badge": {
           "image": "",
@@ -513,7 +526,18 @@ window.SITE = {
         "color": "",
         "standing": [],
         "stats": [],
-        "prompts": [],
+        "prompts": [
+          {
+            "label": "외형",
+            "text": "Girl, cute face, mistake, shy, beige hair, light pink eyes, 2::tarame::, wavy long hair, hair intake,",
+            "note": ""
+          },
+          {
+            "label": "의상",
+            "text": "soft beige cardigan, white t-shirts,",
+            "note": ""
+          }
+        ],
         "faction": "",
         "badge": {
           "image": "",
@@ -536,7 +560,18 @@ window.SITE = {
         "color": "",
         "standing": [],
         "stats": [],
-        "prompts": [],
+        "prompts": [
+          {
+            "label": "외형",
+            "text": "",
+            "note": ""
+          },
+          {
+            "label": "의상",
+            "text": "",
+            "note": ""
+          }
+        ],
         "faction": "",
         "badge": {
           "image": "",
@@ -559,7 +594,18 @@ window.SITE = {
         "color": "",
         "standing": [],
         "stats": [],
-        "prompts": [],
+        "prompts": [
+          {
+            "label": "외형",
+            "text": "",
+            "note": ""
+          },
+          {
+            "label": "의상",
+            "text": "",
+            "note": ""
+          }
+        ],
         "faction": "",
         "badge": {
           "image": "",
@@ -1083,19 +1129,20 @@ window.SITE = {
             "name": "#탱귤",
             "members": [
               {
-                "oc": "char1"
+                "oc": "char1",
+                "image": "img/prompt-char1.webp"
               },
               {
                 "name": "Santa",
-                "image": "img/pair-list-1-portraits-1.png",
+                "image": "img/prompt-pair-santa.webp",
                 "prompts": [
                   {
                     "label": "외형",
-                    "text": ""
+                    "text": "boy, close, black hair, streak of white in bangs, curtained hair, center part bang, 0.4::wolf cut::, brown eyes, 1.5::smrik::, 1.3::muscular::, aged up, handsome, smile, 0.5::mischievous, canine::,"
                   },
                   {
                     "label": "의상",
-                    "text": ""
+                    "text": "white dress shirt, black pants, black necktie, gold shoulder boards, blazer over shoulders,"
                   }
                 ]
               }
@@ -1105,19 +1152,20 @@ window.SITE = {
             "name": "#724",
             "members": [
               {
-                "oc": "char2"
+                "oc": "char2",
+                "image": "img/prompt-char2.webp"
               },
               {
                 "name": "Seven",
-                "image": "",
+                "image": "img/prompt-pair-seven.webp",
                 "prompts": [
                   {
                     "label": "외형",
-                    "text": ""
+                    "text": "Boy, mature male, toned, 1.5::burn scars on neck, burn scars:: 1.7::burn scar on left face:, 0.7::muscular::, tall black hair, short hair, shaved nape, 0.6::messy hair:: 0.7:smirk: smile, gentle smile, jitome, tsurime, half closed eyes, pale gray eyes, black sunglasses,"
                   },
                   {
                     "label": "의상",
-                    "text": ""
+                    "text": "black technical utility jacket, unzipped jacket, protective pads on elbows, black tactical gloves"
                   }
                 ]
               }
@@ -1127,11 +1175,12 @@ window.SITE = {
             "name": "#더블",
             "members": [
               {
-                "oc": "char3"
+                "oc": "char3",
+                "image": "img/prompt-char3.webp"
               },
               {
                 "name": "Blue",
-                "image": "",
+                "image": "img/prompt-pair-blue.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1149,19 +1198,20 @@ window.SITE = {
             "name": "#서서",
             "members": [
               {
-                "oc": "char4"
+                "oc": "char4",
+                "image": "img/prompt-char4.webp"
               },
               {
                 "name": "서해영",
-                "image": "img/pair-list-3-portraits-1.png",
+                "image": "img/prompt-pair-haeyoung.webp",
                 "prompts": [
                   {
                     "label": "외형",
-                    "text": ""
+                    "text": "boy, brown hair, light brown streaks, \nparted bangs, middle part, neat hair, \nwolf cut, long mullet, black eyes, tsurime, smug, ear piercing, broad shoulders,"
                   },
                   {
                     "label": "의상",
-                    "text": ""
+                    "text": "dark denim jacket, white shirt,"
                   }
                 ]
               }
@@ -1171,11 +1221,12 @@ window.SITE = {
             "name": "#후냐",
             "members": [
               {
-                "oc": "char5"
+                "oc": "char5",
+                "image": "img/prompt-char5.webp"
               },
               {
                 "name": "Mustang",
-                "image": "",
+                "image": "img/prompt-pair-mustang.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1193,11 +1244,12 @@ window.SITE = {
             "name": "#QT",
             "members": [
               {
-                "oc": "char6"
+                "oc": "char6",
+                "image": "img/prompt-char6.webp"
               },
               {
                 "name": "TITAN",
-                "image": "",
+                "image": "img/prompt-pair-titan.webp",
                 "prompts": [
                   {
                     "label": "외형",
