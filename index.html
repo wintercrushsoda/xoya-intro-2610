@@ -2558,6 +2558,113 @@ function Calendar(root, cfg) {
       body.appendChild(sec);
     }));
   }
+  var PS_ICON = '<svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
+  // 프롬프트 탭: OC + 페어 2인 세트. OC 칸은 oc 목록의 이름·썸네일·프롬프트를 그대로 가져옴
+  function psMember(m) {
+    var c = null;
+    if (m.oc) (D.oc && D.oc.list || []).forEach((function(o) {
+      if (o.id === m.oc) c = o;
+    }));
+    if (!c) return {
+      name: m.name || "",
+      image: m.image || "",
+      prompts: m.prompts || [],
+      isOc: false
+    };
+    var list = [], seen = {};
+    function add(p, pre) {
+      if (!p || !p.label) return;
+      var label = seen[p.label] && pre ? pre + " " + p.label : p.label;
+      if (seen[label]) return;
+      seen[label] = 1;
+      list.push({
+        label: label,
+        text: p.text || ""
+      });
+    }
+    (c.prompts || []).forEach((function(p) {
+      add(p);
+    }));
+    (c.standing || []).forEach((function(st) {
+      (st.prompts || []).forEach((function(p) {
+        add(p, st.label);
+      }));
+    }));
+    if (!list.length) list = [ {
+      label: "외형",
+      text: ""
+    }, {
+      label: "의상",
+      text: ""
+    } ];
+    return {
+      name: m.name || c.name || "",
+      image: m.image || c.thumb || "",
+      prompts: list,
+      isOc: true
+    };
+  }
+  function buildPromptSets(tab, body) {
+    var grid = el("div", "ps-grid");
+    (tab.promptSets || []).forEach((function(set, si) {
+      var mem = (set.members || []).map(psMember).filter((function(m) {
+        return m.name;
+      }));
+      if (!mem.length) return;
+      var box = el("section", "ps-set");
+      var h = el("div", "ps-head");
+      h.appendChild(el("span", "ps-no", "No." + (si < 9 ? "0" : "") + (si + 1)));
+      h.appendChild(el("strong", "ps-title", set.name || mem.map((function(m) {
+        return m.name;
+      })).join(" × ")));
+      if (set.name) h.appendChild(el("span", "ps-sub", mem.map((function(m) {
+        return m.name;
+      })).join(" × ")));
+      box.appendChild(h);
+      var row = el("div", "ps-pair");
+      mem.forEach((function(m) {
+        var card = el("div", "ps-card" + (m.isOc ? " is-oc" : ""));
+        var pic = el("div", "ps-pic");
+        if (m.image) pic.style.backgroundImage = 'url("' + m.image + '")'; else {
+          pic.classList.add("is-empty");
+          pic.textContent = m.name.charAt(0);
+        }
+        card.appendChild(pic);
+        var nm = el("div", "ps-name");
+        nm.appendChild(el("span", "ps-who", m.isOc ? "OC" : "PAIR"));
+        nm.appendChild(el("b", "", m.name));
+        card.appendChild(nm);
+        var bx = el("div", "ps-btns");
+        m.prompts.forEach((function(p) {
+          var text = String(p.text || "").trim();
+          var b = el("button", "ps-copy");
+          b.type = "button";
+          b.innerHTML = PS_ICON;
+          b.appendChild(el("span", "", p.label));
+          if (!text) {
+            b.disabled = true;
+            b.title = "준비 중";
+          } else b.onclick = function() {
+            copyText(text, (function(ok) {
+              toastMsg(ok ? m.name + " · " + p.label + " 프롬프트를 복사했어요" : "복사에 실패했어요");
+              if (!ok) return;
+              b.classList.add("is-done");
+              setTimeout((function() {
+                b.classList.remove("is-done");
+              }), 1400);
+            }));
+          };
+          bx.appendChild(b);
+        }));
+        card.appendChild(bx);
+        row.appendChild(card);
+      }));
+      box.appendChild(row);
+      grid.appendChild(box);
+    }));
+    if (!grid.children.length) grid.appendChild(el("p", "pt-empty", "준비 중이에요"));
+    body.appendChild(grid);
+  }
   var tabs = (OW.tabs || []).slice();
   var cur = -1, swapTimer = null;
   function showTab(i) {
@@ -2574,8 +2681,9 @@ function Calendar(root, cfg) {
       body.appendChild(el("p", "pr-detail-title", t.title || t.name || ""));
       if (t.banners) buildBannerTab(t, body);
       if (t.family) buildFamilyTab(t, body);
+      if (t.promptSets) buildPromptSets(t, body);
       renderSections(t.sections, body);
-      var kids = body.querySelectorAll(".fm-card, .ow-row, .ow-text, .ow-chip, .ow-note, .ow-quote, .ow-men-row");
+      var kids = body.querySelectorAll(".fm-card, .ow-row, .ow-text, .ow-chip, .ow-note, .ow-quote, .ow-men-row, .ps-set");
       for (var k = 0; k < kids.length; k++) kids[k].style.setProperty("--d", .08 + k * .05 + "s");
     }
     moveInd(i);
