@@ -1147,7 +1147,8 @@ window.SITE = {
                 ],
                 "key": "pair-santa"
               }
-            ]
+            ],
+            "label": "ARCH"
           },
           {
             "name": "#724",
@@ -1171,7 +1172,8 @@ window.SITE = {
                 ],
                 "key": "pair-seven"
               }
-            ]
+            ],
+            "label": "Aftermess"
           },
           {
             "name": "#더블",
@@ -1195,7 +1197,8 @@ window.SITE = {
                 ],
                 "key": "pair-blue"
               }
-            ]
+            ],
+            "label": "ARCH"
           },
           {
             "name": "#서서",
@@ -1219,7 +1222,8 @@ window.SITE = {
                 ],
                 "key": "pair-haeyoung"
               }
-            ]
+            ],
+            "label": "Sizz"
           },
           {
             "name": "#후냐",
@@ -1243,7 +1247,8 @@ window.SITE = {
                 ],
                 "key": "pair-mustang"
               }
-            ]
+            ],
+            "label": "Fearless"
           },
           {
             "name": "#QT",
@@ -1267,7 +1272,8 @@ window.SITE = {
                 ],
                 "key": "pair-titan"
               }
-            ]
+            ],
+            "label": "Fearless"
           }
         ]
       }
