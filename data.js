@@ -1133,7 +1133,7 @@ window.SITE = {
                 "image": "img/prompt-char1.webp"
               },
               {
-                "name": "Santa",
+                "name": "산타",
                 "image": "img/prompt-pair-santa.webp",
                 "prompts": [
                   {
@@ -1144,9 +1144,11 @@ window.SITE = {
                     "label": "의상",
                     "text": "white dress shirt, black pants, black necktie, gold shoulder boards, blazer over shoulders,"
                   }
-                ]
+                ],
+                "key": "pair-santa"
               }
-            ]
+            ],
+            "label": "ARCH"
           },
           {
             "name": "#724",
@@ -1156,7 +1158,7 @@ window.SITE = {
                 "image": "img/prompt-char2.webp"
               },
               {
-                "name": "Seven",
+                "name": "세븐",
                 "image": "img/prompt-pair-seven.webp",
                 "prompts": [
                   {
@@ -1167,9 +1169,11 @@ window.SITE = {
                     "label": "의상",
                     "text": "black technical utility jacket, unzipped jacket, protective pads on elbows, black tactical gloves"
                   }
-                ]
+                ],
+                "key": "pair-seven"
               }
-            ]
+            ],
+            "label": "Aftermess"
           },
           {
             "name": "#더블",
@@ -1179,7 +1183,7 @@ window.SITE = {
                 "image": "img/prompt-char3.webp"
               },
               {
-                "name": "Blue",
+                "name": "블루",
                 "image": "img/prompt-pair-blue.webp",
                 "prompts": [
                   {
@@ -1190,9 +1194,11 @@ window.SITE = {
                     "label": "의상",
                     "text": ""
                   }
-                ]
+                ],
+                "key": "pair-blue"
               }
-            ]
+            ],
+            "label": "ARCH"
           },
           {
             "name": "#서서",
@@ -1213,9 +1219,11 @@ window.SITE = {
                     "label": "의상",
                     "text": "dark denim jacket, white shirt,"
                   }
-                ]
+                ],
+                "key": "pair-haeyoung"
               }
-            ]
+            ],
+            "label": "Sizz"
           },
           {
             "name": "#후냐",
@@ -1225,7 +1233,7 @@ window.SITE = {
                 "image": "img/prompt-char5.webp"
               },
               {
-                "name": "Mustang",
+                "name": "머스탱",
                 "image": "img/prompt-pair-mustang.webp",
                 "prompts": [
                   {
@@ -1236,9 +1244,11 @@ window.SITE = {
                     "label": "의상",
                     "text": ""
                   }
-                ]
+                ],
+                "key": "pair-mustang"
               }
-            ]
+            ],
+            "label": "Fearless"
           },
           {
             "name": "#QT",
@@ -1248,7 +1258,7 @@ window.SITE = {
                 "image": "img/prompt-char6.webp"
               },
               {
-                "name": "TITAN",
+                "name": "타이탄",
                 "image": "img/prompt-pair-titan.webp",
                 "prompts": [
                   {
@@ -1259,9 +1269,11 @@ window.SITE = {
                     "label": "의상",
                     "text": ""
                   }
-                ]
+                ],
+                "key": "pair-titan"
               }
-            ]
+            ],
+            "label": "Fearless"
           }
         ]
       }
