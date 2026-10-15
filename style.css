@@ -8403,6 +8403,38 @@ html.is-mobile .ow-men-head {
 .ow-men-row.is-note {
   display: block
 }
+.ow-men-duo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  column-gap: 36px;
+  row-gap: 14px;
+  padding: 4px 2px 14px;
+  border-bottom: 1px dashed var(--c-line)
+}
+.ow-men-duo > .ow-men-row {
+  padding: 0;
+  border-bottom: 0
+}
+.ow-men-duo > .ow-men-row + .ow-men-row {
+  grid-template-columns: auto auto;
+  align-items: center;
+  align-self: center
+}
+.ow-men-duo > .ow-men-row + .ow-men-row .ow-men-head {
+  padding-top: 0
+}
+html.is-mobile .ow-men-duo {
+  column-gap: 20px;
+  padding: 4px 0 12px
+}
+html.is-mobile .ow-men-duo > .ow-men-row {
+  padding: 0
+}
+html.is-mobile .ow-men-duo > .ow-men-row + .ow-men-row {
+  grid-template-columns: 1fr;
+  align-self: start
+}
 .ow-men-note {
   position: relative;
   padding-left: 16px;
