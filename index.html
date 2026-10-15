@@ -2568,6 +2568,7 @@ function Calendar(root, cfg) {
     if (!c) return {
       name: m.name || "",
       image: m.image || "",
+      crop: m.crop,
       prompts: m.prompts || [],
       isOc: false
     };
@@ -2600,6 +2601,7 @@ function Calendar(root, cfg) {
     return {
       name: m.name || c.name || "",
       image: m.image || c.thumb || "",
+      crop: m.crop,
       prompts: list,
       isOc: true
     };
@@ -2625,7 +2627,19 @@ function Calendar(root, cfg) {
       mem.forEach((function(m) {
         var card = el("div", "ps-card" + (m.isOc ? " is-oc" : ""));
         var pic = el("div", "ps-pic");
-        if (m.image) pic.style.backgroundImage = 'url("' + m.image + '")'; else {
+        if (m.image) {
+          var im = el("img");
+          im.src = m.image;
+          im.alt = m.name;
+          im.loading = "lazy";
+          var cr = m.crop || {}, cx = cr.x != null ? cr.x : 50, cy = cr.y != null ? cr.y : 15, cz = cr.z || 1;
+          im.style.objectPosition = cx + "% " + cy + "%";
+          if (cz !== 1) {
+            im.style.transformOrigin = cx + "% " + cy + "%";
+            im.style.transform = "scale(" + cz + ")";
+          }
+          pic.appendChild(im);
+        } else {
           pic.classList.add("is-empty");
           pic.textContent = m.name.charAt(0);
         }

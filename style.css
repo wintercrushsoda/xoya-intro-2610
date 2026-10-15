@@ -8917,8 +8917,16 @@ html.is-mobile .fm-text span {
 }
 .ps-card + .ps-card .ps-pic {
   margin-left: -8px;
-  border-radius: 0 12px 12px 0;
-  box-shadow: inset 1px 0 0 color-mix(in srgb,var(--c-card) 70%,transparent)
+  border-radius: 0 12px 12px 0
+}
+.ps-card + .ps-card .ps-pic::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: color-mix(in srgb,var(--c-card) 70%,transparent)
 }
 .ps-card {
   display: flex;
@@ -8927,9 +8935,19 @@ html.is-mobile .fm-text span {
   min-width: 0
 }
 .ps-pic {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 3/4;
   border-radius: 12px;
   background: var(--c-soft) center 15%/cover no-repeat
+}
+.ps-pic img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%
 }
 .ps-pic.is-empty {
   display: grid;
