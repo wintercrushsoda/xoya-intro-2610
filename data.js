@@ -1190,7 +1190,7 @@ window.SITE = {
             ]
           },
           {
-            "name": "",
+            "name": "#QT",
             "members": [
               {
                 "oc": "char6"
