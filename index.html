@@ -2376,7 +2376,7 @@ function Calendar(root, cfg) {
           note: gr.name
         });
       }));
-      var gi = 0;
+      var gi = 0, duo = null;
       merged.forEach((function(gr) {
         if (gr.note) {
           var nr = el("div", "ow-men-row is-note");
@@ -2396,7 +2396,14 @@ function Calendar(root, cfg) {
           list.appendChild(c);
         }));
         row.appendChild(list);
-        mw.appendChild(row);
+        // 메인·서브(첫 두 묶음)는 한 줄에 나란히
+        if (gi === 1) {
+          duo = el("div", "ow-men-duo");
+          duo.appendChild(row);
+          mw.appendChild(duo);
+        } else if (gi === 2 && duo && mw.lastChild === duo) {
+          duo.appendChild(row);
+        } else mw.appendChild(row);
       }));
       return mw;
     }
