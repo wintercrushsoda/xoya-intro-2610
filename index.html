@@ -2570,7 +2570,7 @@ function Calendar(root, cfg) {
       image: m.image || "",
       crop: m.crop,
       prompts: m.prompts || [],
-      isOc: false
+      isOc: m.role === "oc"
     };
     var list = [], seen = {};
     function add(p, pre) {
