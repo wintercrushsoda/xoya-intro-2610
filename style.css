@@ -8848,16 +8848,13 @@ html.is-mobile .fm-text span {
 }.ps-grid {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 16px
+  gap: 28px 24px
 }
 .ps-set {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-  padding: 12px;
-  border-radius: 20px;
-  background: var(--c-soft)
+  gap: 12px;
+  min-width: 0
 }
 .ow-panel.is-in .ps-set {
   animation: fadeUp .55s ease both;
@@ -8865,27 +8862,40 @@ html.is-mobile .fm-text span {
 }
 .ps-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
-  min-width: 0;
-  padding: 2px 4px 0
+  min-width: 0
 }
 .ps-no {
+  flex: none;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--c-text);
+  color: var(--c-card);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  color: var(--c-sub)
+  font-weight: 800;
+  letter-spacing: .02em
 }
 .ps-title {
-  font-size: 15px;
+  flex: none;
+  font-size: 16px;
   font-weight: 800;
   color: var(--c-text);
   white-space: nowrap
 }
+.ps-line {
+  flex: 1;
+  min-width: 12px;
+  height: 1px;
+  background: var(--c-line)
+}
 .ps-sub {
+  flex: none;
+  max-width: 55%;
   overflow: hidden;
   font-size: 11px;
   font-weight: 600;
+  letter-spacing: .02em;
   color: var(--c-sub);
   white-space: nowrap;
   text-overflow: ellipsis
@@ -8893,21 +8903,17 @@ html.is-mobile .fm-text span {
 .ps-pair {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 8px
+  gap: 10px
 }
 .ps-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 0;
-  padding: 9px;
-  border: 1px solid var(--c-line);
-  border-radius: 14px;
-  background: var(--c-card)
+  min-width: 0
 }
 .ps-pic {
-  aspect-ratio: 4/3;
-  border-radius: 9px;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
   background: var(--c-soft) center 15%/cover no-repeat
 }
 .ps-pic.is-empty {
@@ -8952,6 +8958,8 @@ html.is-mobile .fm-text span {
   gap: 5px
 }
 .ps-copy {
+  flex: 1 1 0;
+  justify-content: center;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -8997,11 +9005,7 @@ html.is-mobile .fm-text span {
 }
 html.is-mobile .ps-grid {
   grid-template-columns: 1fr;
-  gap: 12px
-}
-html.is-mobile .ps-set {
-  padding: 10px;
-  border-radius: 16px
+  gap: 24px
 }
 html.is-mobile .ps-copy {
   height: 26px;

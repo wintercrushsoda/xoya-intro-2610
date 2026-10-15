@@ -2613,13 +2613,13 @@ function Calendar(root, cfg) {
       if (!mem.length) return;
       var box = el("section", "ps-set");
       var h = el("div", "ps-head");
-      h.appendChild(el("span", "ps-no", "No." + (si < 9 ? "0" : "") + (si + 1)));
-      h.appendChild(el("strong", "ps-title", set.name || mem.map((function(m) {
+      var pairName = set.label || mem.map((function(m) {
         return m.name;
-      })).join(" × ")));
-      if (set.name) h.appendChild(el("span", "ps-sub", mem.map((function(m) {
-        return m.name;
-      })).join(" × ")));
+      })).join(" × ");
+      h.appendChild(el("span", "ps-no", (si < 9 ? "0" : "") + (si + 1)));
+      h.appendChild(el("strong", "ps-title", set.name || pairName));
+      h.appendChild(el("span", "ps-line"));
+      if (set.name) h.appendChild(el("span", "ps-sub", pairName));
       box.appendChild(h);
       var row = el("div", "ps-pair");
       mem.forEach((function(m) {
