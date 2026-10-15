@@ -527,7 +527,7 @@ window.SITE = {
       {
         "id": "char5",
         "name": "아가페",
-        "en": "Pair MUATANG",
+        "en": "Pair MUSTANG",
         "tag": "No.05",
         "subtitle": "",
         "desc": "",
@@ -1071,6 +1071,143 @@ window.SITE = {
                 "desc": "[Legacy] 페어홈",
                 "image": "img/owner-tabs-2-family-2-items-6-image.png",
                 "link": "https://winterholiday.naru.pub/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Prompt",
+        "promptSets": [
+          {
+            "name": "#탱귤",
+            "members": [
+              {
+                "oc": "char1"
+              },
+              {
+                "name": "Santa",
+                "image": "img/pair-list-1-portraits-1.png",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#724",
+            "members": [
+              {
+                "oc": "char2"
+              },
+              {
+                "name": "Seven",
+                "image": "",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#더블",
+            "members": [
+              {
+                "oc": "char3"
+              },
+              {
+                "name": "Blue",
+                "image": "",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#서서",
+            "members": [
+              {
+                "oc": "char4"
+              },
+              {
+                "name": "서해영",
+                "image": "img/pair-list-3-portraits-1.png",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#후냐",
+            "members": [
+              {
+                "oc": "char5"
+              },
+              {
+                "name": "Mustang",
+                "image": "",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "",
+            "members": [
+              {
+                "oc": "char6"
+              },
+              {
+                "name": "TITAN",
+                "image": "",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": ""
+                  },
+                  {
+                    "label": "의상",
+                    "text": ""
+                  }
+                ]
               }
             ]
           }
