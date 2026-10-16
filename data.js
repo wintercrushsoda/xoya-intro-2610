@@ -1130,11 +1130,10 @@ window.SITE = {
             "members": [
               {
                 "oc": "char1",
-                "image": "img/prompt-char1.webp"
+                "image": "img/prompt-char1-24847a.webp"
               },
               {
                 "name": "산타",
-                "image": "img/prompt-pair-santa.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1145,7 +1144,8 @@ window.SITE = {
                     "text": "white dress shirt, black pants, black necktie, gold shoulder boards, blazer over shoulders,"
                   }
                 ],
-                "key": "pair-santa"
+                "key": "pair-santa",
+                "image": "img/prompt-pair-santa-186e3a.webp"
               }
             ],
             "label": "ARCH"
@@ -1155,11 +1155,15 @@ window.SITE = {
             "members": [
               {
                 "oc": "char2",
-                "image": "img/prompt-char2.webp"
+                "image": "img/prompt-char2-9cc176.webp",
+                "crop": {
+                  "x": 59,
+                  "y": 0,
+                  "z": 1.2
+                }
               },
               {
                 "name": "세븐",
-                "image": "img/prompt-pair-seven.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1170,7 +1174,13 @@ window.SITE = {
                     "text": "black technical utility jacket, unzipped jacket, protective pads on elbows, black tactical gloves"
                   }
                 ],
-                "key": "pair-seven"
+                "key": "pair-seven",
+                "image": "img/prompt-pair-seven-f98440.webp",
+                "crop": {
+                  "x": 45.8,
+                  "y": 0,
+                  "z": 1
+                }
               }
             ],
             "label": "Aftermess"
@@ -1180,11 +1190,15 @@ window.SITE = {
             "members": [
               {
                 "oc": "char3",
-                "image": "img/prompt-char3.webp"
+                "image": "img/prompt-char3-acf196.webp",
+                "crop": {
+                  "x": 53.3,
+                  "y": 20.6,
+                  "z": 1
+                }
               },
               {
                 "name": "블루",
-                "image": "img/prompt-pair-blue.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1195,7 +1209,13 @@ window.SITE = {
                     "text": ""
                   }
                 ],
-                "key": "pair-blue"
+                "key": "pair-blue",
+                "image": "img/prompt-pair-blue-7e0dc3.webp",
+                "crop": {
+                  "x": 49.2,
+                  "y": 19.8,
+                  "z": 1.05
+                }
               }
             ],
             "label": "ARCH"
@@ -1205,11 +1225,15 @@ window.SITE = {
             "members": [
               {
                 "oc": "char4",
-                "image": "img/prompt-char4.webp"
+                "image": "img/prompt-char4-4fd20e.webp",
+                "crop": {
+                  "x": 43.7,
+                  "y": 24.5,
+                  "z": 1.05
+                }
               },
               {
                 "name": "서해영",
-                "image": "img/prompt-pair-haeyoung.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1220,7 +1244,13 @@ window.SITE = {
                     "text": "dark denim jacket, white shirt,"
                   }
                 ],
-                "key": "pair-haeyoung"
+                "key": "pair-haeyoung",
+                "image": "img/prompt-pair-haeyoung-2a0cb9.webp",
+                "crop": {
+                  "x": 45.5,
+                  "y": 8.8,
+                  "z": 1.1
+                }
               }
             ],
             "label": "Sizz"
@@ -1230,11 +1260,15 @@ window.SITE = {
             "members": [
               {
                 "oc": "char5",
-                "image": "img/prompt-char5.webp"
+                "image": "img/prompt-char5-ae6502.webp",
+                "crop": {
+                  "x": 50,
+                  "y": 15,
+                  "z": 1.35
+                }
               },
               {
                 "name": "머스탱",
-                "image": "img/prompt-pair-mustang.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1245,10 +1279,63 @@ window.SITE = {
                     "text": ""
                   }
                 ],
-                "key": "pair-mustang"
+                "key": "pair-mustang",
+                "image": "img/prompt-pair-mustang-d2ea24.webp",
+                "crop": {
+                  "x": 50,
+                  "y": 15,
+                  "z": 1
+                }
               }
             ],
             "label": "Fearless"
+          },
+          {
+            "name": "#의도",
+            "members": [
+              {
+                "name": "템프",
+                "role": "oc",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": "girl, white hair, white eyes, empty eyes, expressionless, somber, sanpaku, no pupil, white eyepatch, high ponytail, small red pupil"
+                  },
+                  {
+                    "label": "의상",
+                    "text": "black suit,"
+                  }
+                ],
+                "key": "new-mva7i49p-vhx5-oc",
+                "image": "img/prompt-new-mva7i49p-vhx5-oc-17472e.webp",
+                "crop": {
+                  "x": 59.1,
+                  "y": 8.8,
+                  "z": 1.1
+                }
+              },
+              {
+                "name": "저스티스",
+                "prompts": [
+                  {
+                    "label": "외형",
+                    "text": "boy, adult, 1.2::mature male, aged up::, Dominant, Sharp Eyes, muscular, white hair, Silver Hair, blue eyes, Parted hair, 1.7::Color sunglasses:: Chest muscles"
+                  },
+                  {
+                    "label": "의상",
+                    "text": "dark brown trench coat, harness, fitted white dress shirt,"
+                  }
+                ],
+                "key": "new-mva7i4jt-zw01-pair",
+                "image": "img/prompt-new-mva7i4jt-zw01-pair-46ced7.webp",
+                "crop": {
+                  "x": 43.2,
+                  "y": 0,
+                  "z": 1.1
+                }
+              }
+            ],
+            "label": "ARCH"
           },
           {
             "name": "#QT",
@@ -1259,7 +1346,6 @@ window.SITE = {
               },
               {
                 "name": "타이탄",
-                "image": "img/prompt-pair-titan.webp",
                 "prompts": [
                   {
                     "label": "외형",
@@ -1270,7 +1356,8 @@ window.SITE = {
                     "text": ""
                   }
                 ],
-                "key": "pair-titan"
+                "key": "pair-titan",
+                "image": "img/prompt-pair-titan.webp"
               }
             ],
             "label": "Fearless"
