@@ -9045,3 +9045,40 @@ html.is-mobile .ps-copy {
   padding: 0 9px;
   font-size: 11px
 }
+.ps-pic.is-zoom {
+  cursor: zoom-in
+}
+.ps-pic.is-zoom:focus-visible {
+  outline: 2px solid var(--c-text);
+  outline-offset: 2px
+}
+.ps-pic.is-zoom img {
+  transition: filter .2s ease
+}
+.ps-pic.is-zoom:hover img {
+  filter: brightness(1.05)
+}
+.oc-card.is-locked {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent
+}
+.mp {
+  transition: transform .3s ease,opacity .3s ease
+}
+html.is-mobile .mp.is-folded.is-tucked {
+  opacity: .9;
+  transform: scale(.86);
+  transform-origin: left bottom
+}
+html.is-mobile .mp.cal.is-tucked {
+  transform-origin: right bottom
+}
+html.is-mobile .mp.is-folded.is-tucked:not(.cal) .mp-info,
+html.is-mobile .mp.is-folded.is-tucked:not(.cal) [data-act=fold] {
+  display: none
+}
+@media (prefers-reduced-motion: reduce) {
+  .mp {
+    transition: none
+  }
+}

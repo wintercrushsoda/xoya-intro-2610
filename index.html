@@ -367,6 +367,22 @@ window.TOAST = function() {
   };
 }();
 
+// 잠긴 카드: 눌렀을 때 준비 중 안내
+window.lockedTap = function(el, item) {
+  el.setAttribute("role", "button");
+  el.tabIndex = 0;
+  function tell() {
+    TOAST(item.lockedToast || (item.name ? item.name + " · 아직 준비 중이에요" : "아직 준비 중이에요"));
+  }
+  el.addEventListener("click", tell);
+  el.addEventListener("keydown", (function(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      tell();
+    }
+  }));
+};
+
 window.LB = function() {
   function $(id) {
     return document.getElementById(id);
@@ -858,7 +874,7 @@ function Calendar(root, cfg) {
   if (O.listGrayscale !== false) grid.classList.add("is-gray");
   LIST.forEach((function(c, i) {
     var a = el(c.locked ? "div" : "a", "oc-card" + (c.locked ? " is-locked" : ""));
-    if (!c.locked) a.href = "#oc/" + encodeURIComponent(c.id || "oc" + i);
+    if (!c.locked) a.href = "#oc/" + encodeURIComponent(c.id || "oc" + i); else lockedTap(a, c);
     a.style.animationDelay = .15 + i * .07 + "s";
     var box = el("div", "oc-card-img");
     var src = c.thumb || ((c.standing || [])[0] || {}).image;
@@ -1439,7 +1455,7 @@ function Calendar(root, cfg) {
   LIST.forEach((function(p, i) {
     var mems = (p.members || []).slice(0, 4).map(member);
     var a = el(p.locked ? "div" : "a", "oc-card pr-card" + (p.locked ? " is-locked" : ""));
-    if (!p.locked) a.href = "#pair/" + encodeURIComponent(p.id || "pair" + i);
+    if (!p.locked) a.href = "#pair/" + encodeURIComponent(p.id || "pair" + i); else lockedTap(a, p);
     a.style.animationDelay = .15 + i * .08 + "s";
     var box = el("div", "oc-card-img pr-card-img");
     if (p.thumb) {
@@ -2607,7 +2623,7 @@ function Calendar(root, cfg) {
     };
   }
   function buildPromptSets(tab, body) {
-    var grid = el("div", "ps-grid");
+    var grid = el("div", "ps-grid"), gallery = [];
     (tab.promptSets || []).forEach((function(set, si) {
       var mem = (set.members || []).map(psMember).filter((function(m) {
         return m.name;
@@ -2639,6 +2655,24 @@ function Calendar(root, cfg) {
             im.style.transform = "scale(" + cz + ")";
           }
           pic.appendChild(im);
+          var gi = gallery.length;
+          gallery.push({
+            image: m.image,
+            caption: m.name
+          });
+          pic.classList.add("is-zoom");
+          pic.setAttribute("role", "button");
+          pic.tabIndex = 0;
+          pic.setAttribute("aria-label", m.name + " 사진 크게 보기");
+          pic.onclick = function() {
+            LB.open(gallery, gi);
+          };
+          pic.onkeydown = function(e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              LB.open(gallery, gi);
+            }
+          };
         } else {
           pic.classList.add("is-empty");
           pic.textContent = m.name.charAt(0);
@@ -3448,6 +3482,29 @@ function Calendar(root, cfg) {
     }
   });
   var manual = !!st.manual;
+  // 모바일: 아래로 스크롤하는 동안 플레이어를 작은 동그라미로 접어 글을 덜 가리게
+  (function() {
+    var lastY = {}, timer = null;
+    function setTuck(on) {
+      var docks = document.querySelectorAll(".mp");
+      for (var i = 0; i < docks.length; i++) docks[i].classList.toggle("is-tucked", on);
+    }
+    document.addEventListener("scroll", (function(e) {
+      if (!isMobile()) return;
+      var t = e.target === document ? document.scrollingElement : e.target;
+      if (!t || t.closest && t.closest(".mp")) return;
+      var key = t === document.scrollingElement ? "doc" : t.id || t.className, y = t.scrollTop, prev = lastY[key] || 0;
+      lastY[key] = y;
+      if (y < 40 || y < prev - 6) setTuck(false); else if (y > prev + 6) setTuck(true);
+      clearTimeout(timer);
+      timer = setTimeout((function() {
+        setTuck(false);
+      }), 1600);
+    }), true);
+    window.addEventListener("hashchange", (function() {
+      setTuck(false);
+    }));
+  })();
   function isMobile() {
     return window.innerWidth <= (D.mobileWidth || 820);
   }
